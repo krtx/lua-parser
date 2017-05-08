@@ -54,7 +54,6 @@ The corresponding AST is
 
 ```
 a = b + (c(print or io.write)('done'))
-
 ```
 
 In this case, when the first open parenthesis is reached, shifting is occured and `(print or io.write)` is interpreted as an argument to the function `c`.
