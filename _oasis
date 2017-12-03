@@ -1,0 +1,20 @@
+Name: lua-parser
+Version: 1.0.0
+Synopsis: Simple lua parser.
+Authors: KINOSHITA Minoru <kinoshita.minoru22@gmail.com>
+License: MIT
+
+OASISFormat: 0.4
+BuildTools: ocamlbuild
+Plugins: META (0.4), DevFiles (0.4)
+
+AlphaFeatures:
+  ocamlbuild_more_args
+
+XOCamlbuildExtraArgs:
+  -use-menhir
+
+Library "lua-parser"
+  Path: lib
+  Modules: Parser, Syntax, Lexer
+  BuildTools+: menhir, ocamllex
