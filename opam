@@ -1,0 +1,20 @@
+opam-version: "1.2"
+name: "lua-parser"
+version: "1.0.0"
+maintainer: "kinoshita.minoru22@gmail.com"
+authors: ["KINOSHITA Minoru"]
+homepage: "https://github.com/krtx/lua-parser"
+bug-reports: "https://github.com/krtx/lua-parser/issues"
+license: "MIT"
+dev-repo: "https://github.com/krtx/lua-parser.git"
+build: [
+  ["./configure"]
+  [make]
+]
+build-test: [
+  ["./configure" "--enable-tests"]
+  [make "test"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "project"]
+depends: "ocamlfind"

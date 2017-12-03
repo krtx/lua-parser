@@ -1,2 +1,5 @@
-_build/
-main.byte
+_build
+*.byte
+*.native
+setup.data
+setup.log
