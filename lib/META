@@ -1,11 +1,13 @@
 # OASIS_START
-# DO NOT EDIT (digest: 5de3c147cc02616dc612a9f0e6258437)
+# DO NOT EDIT (digest: b87b0559a630cef555a8551a319299df)
 version = "1.0.0"
 description = "Simple lua parser."
+requires = "ppx_deriving.std"
 archive(byte) = "lua-parser.cma"
 archive(byte, plugin) = "lua-parser.cma"
 archive(native) = "lua-parser.cmxa"
 archive(native, plugin) = "lua-parser.cmxs"
+ppxopt = "ppx_deriving.std"
 exists_if = "lua-parser.cma"
 # OASIS_STOP
 

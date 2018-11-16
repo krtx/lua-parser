@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: a6d91408682f03c89198fd31c46bf14b)
+# DO NOT EDIT (digest: 7114dc73e2745feab986517360a1b69a)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -16,4 +16,5 @@ true: annot, bin_annot
 "_darcs": not_hygienic
 # Library lua-parser
 "lib/lua-parser.cmxs": use_lua-parser
+<lib/*.ml{,i,y}>: pkg_ppx_deriving.std
 # OASIS_STOP
