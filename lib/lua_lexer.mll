@@ -1,31 +1,31 @@
 {
 open Lexing
-open Syntax
-open Parser
+open Lua_syntax
+open Lua_parser
 
 let reserved_keywords =
-  [ "and",      Parser.AND
-  ; "break",    Parser.BREAK
-  ; "do",       Parser.DO
-  ; "else",     Parser.ELSE
-  ; "elseif",   Parser.ELSEIF
-  ; "end",      Parser.END
-  ; "false",    Parser.FALSE
-  ; "for",      Parser.FOR
-  ; "function", Parser.FUNCTION
-  ; "goto",     Parser.GOTO
-  ; "if",       Parser.IF
-  ; "in",       Parser.IN
-  ; "local",    Parser.LOCAL
-  ; "nil",      Parser.NIL
-  ; "not",      Parser.NOT
-  ; "or",       Parser.OR
-  ; "repeat",   Parser.REPEAT
-  ; "return",   Parser.RETURN
-  ; "then",     Parser.THEN
-  ; "true",     Parser.TRUE
-  ; "until",    Parser.UNTIL
-  ; "while",    Parser.WHILE
+  [ "and",      Lua_parser.AND
+  ; "break",    Lua_parser.BREAK
+  ; "do",       Lua_parser.DO
+  ; "else",     Lua_parser.ELSE
+  ; "elseif",   Lua_parser.ELSEIF
+  ; "end",      Lua_parser.END
+  ; "false",    Lua_parser.FALSE
+  ; "for",      Lua_parser.FOR
+  ; "function", Lua_parser.FUNCTION
+  ; "goto",     Lua_parser.GOTO
+  ; "if",       Lua_parser.IF
+  ; "in",       Lua_parser.IN
+  ; "local",    Lua_parser.LOCAL
+  ; "nil",      Lua_parser.NIL
+  ; "not",      Lua_parser.NOT
+  ; "or",       Lua_parser.OR
+  ; "repeat",   Lua_parser.REPEAT
+  ; "return",   Lua_parser.RETURN
+  ; "then",     Lua_parser.THEN
+  ; "true",     Lua_parser.TRUE
+  ; "until",    Lua_parser.UNTIL
+  ; "while",    Lua_parser.WHILE
   ]
 
 let next_line lexbuf =
@@ -50,22 +50,22 @@ rule read = parse
            try
              List.assoc name reserved_keywords
            with
-             Not_found -> Parser.NAME name }
+             Not_found -> Lua_parser.NAME name }
   | ['0'-'9']+ '.' ['0'-'9']+
-      { Parser.FLOAT (float_of_string (lexeme lexbuf)) }
+      { Lua_parser.FLOAT (float_of_string (lexeme lexbuf)) }
   | ['0'-'9']+ ['e' 'E'] ['0'-'9']+
-      { Parser.FLOAT (float_of_string (lexeme lexbuf)) }
+      { Lua_parser.FLOAT (float_of_string (lexeme lexbuf)) }
   | ['0'-'9']+ '.' ['0'-'9']* ['e' 'E'] ['0'-'9']+
-      { Parser.FLOAT (float_of_string (lexeme lexbuf)) }
+      { Lua_parser.FLOAT (float_of_string (lexeme lexbuf)) }
   | ['0'-'9']+
-      { Parser.INTEGER (int_of_string (lexeme lexbuf)) }
+      { Lua_parser.INTEGER (int_of_string (lexeme lexbuf)) }
   | hex ['0'-'9' 'A'-'F' 'a'-'f']+
-      { Parser.INTEGER (int_of_string (lexeme lexbuf)) }
+      { Lua_parser.INTEGER (int_of_string (lexeme lexbuf)) }
   | ('\'' | '"') as delimiter
-      { Parser.LITERALSTRING
+      { Lua_parser.LITERALSTRING
           (literal_string delimiter lexbuf) }
   | '[' '['
-      { Parser.LITERALSTRING
+      { Lua_parser.LITERALSTRING
           (literal_string_long lexbuf) }
   | '=' { EQUAL }
   | ':' ':' { DOUBLECOLON }
