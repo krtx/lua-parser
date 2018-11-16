@@ -86,3 +86,5 @@ and unop =
   | BitwiseNot
   | Length
   | LogicalNot
+
+[@@deriving show]
