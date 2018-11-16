@@ -1,5 +1,5 @@
 %{
-  open Syntax
+  open Lua_syntax
 
   type whose_arg =
     | FunctionArg of args
@@ -68,9 +68,9 @@
 
 %token <int> INTEGER
 %token <float> FLOAT
-%token <Syntax.name> NAME
+%token <Lua_syntax.name> NAME
 %token <string> LITERALSTRING
-%start <Syntax.block> chunk
+%start <Lua_syntax.block> chunk
 %%
 
 chunk:

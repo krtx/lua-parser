@@ -1,5 +1,5 @@
 Name: lua-parser
-Version: 1.0.0
+Version: 1.1.0
 Synopsis: Simple lua parser.
 Authors: KINOSHITA Minoru <kinoshita.minoru22@gmail.com>
 License: MIT
@@ -16,7 +16,7 @@ XOCamlbuildExtraArgs:
 
 Library "lua-parser"
   Path: lib
-  Modules: Parser, Syntax, Lexer
+  Modules: Lua_parser, Lua_syntax, Lua_lexer
   BuildTools+: menhir, ocamllex
   BuildDepends: ppx_deriving.std
   XMETARequires: ppx_deriving.std
